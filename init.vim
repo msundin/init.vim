@@ -384,8 +384,8 @@ nnoremap <CR> o<Esc>
 " show row numbers
 :set number
 " Point to the Python executables in `asdf` {{{2
-let g:python_host_prog = $HOME . '/usr/bin/python'
-let g:python3_host_prog = $HOME . '/usr/bin/python3.5'
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3.5'
 " ESLint fixer
 let g:ale_fixers = {
   \ 'javascript': ['eslint']
