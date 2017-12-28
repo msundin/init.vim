@@ -397,61 +397,64 @@ let g:ale_fixers = {
 call plug#begin()
 
 " UI
-"Plug 'trevordmiller/nova-vim'
-"Plug 'vim-airline/vim-airline'            " Handy info
-"Plug 'retorillo/airline-tablemode.vim'
-"Plug 'edkolev/tmuxline.vim'               " Make the Tmux bar match Vim
-"Plug 'ryanoasis/vim-webdevicons'
-"Plug 'junegunn/goyo.vim'
+""Plug 'trevordmiller/nova-vim'
+""Plug 'vim-airline/vim-airline'            " Handy info
+""Plug 'retorillo/airline-tablemode.vim'
+""Plug 'edkolev/tmuxline.vim'               " Make the Tmux bar match Vim
+""Plug 'ryanoasis/vim-webdevicons'
+Plug 'junegunn/goyo.vim'
+Plug 'itchyny/lightline.vim'
 
 " Project Navigation
-"Plug 'junegunn/fzf',                      { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
-"Plug 'mhinz/vim-grepper'
-"Plug 'scrooloose/nerdtree'
-"Plug 'vim-scripts/ctags.vim'              " ctags related stuff
-"Plug 'majutsushi/tagbar'
+""Plug 'junegunn/fzf',                      { 'dir': '~/.fzf', 'do': './install --all' }
+""Plug 'junegunn/fzf.vim'
+""Plug 'mhinz/vim-grepper'
+Plug 'scrooloose/nerdtree'
+""Plug 'vim-scripts/ctags.vim'              " ctags related stuff
+""Plug 'majutsushi/tagbar'
 
 " File Navigation
-"Plug 'vim-scripts/matchit.zip'            " More powerful % matching
-"Plug 'Lokaltog/vim-easymotion'            " Move like the wind!
+""Plug 'vim-scripts/matchit.zip'            " More powerful % matching
+""Plug 'Lokaltog/vim-easymotion'            " Move like the wind!
 Plug 'jeffkreeftmeijer/vim-numbertoggle'  " Smarter line numbers
-"Plug 'wellle/targets.vim'
-"Plug 'kshenoy/vim-signature'
-"Plug 'haya14busa/incsearch.vim'           " Better search highlighting
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'amix/open_file_under_cursor.vim'
+""Plug 'wellle/targets.vim'
+""Plug 'kshenoy/vim-signature'
+""Plug 'haya14busa/incsearch.vim'           " Better search highlighting
 
 " Editing {{{3
-"Plug 'tpope/vim-surround'                 " Change word surroundings
-"Plug 'tpope/vim-commentary'               " Comments stuff
-"Plug 'tpope/vim-repeat'
-"Plug 'dhruvasagar/vim-table-mode',        { 'on': 'TableModeEnable' }
-"Plug 'kana/vim-textobj-user'
-"Plug 'sgur/vim-textobj-parameter'
-"Plug 'jasonlong/vim-textobj-css'
-"Plug 'Konfekt/FastFold'
-"Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-surround'                 " Change word surroundings
+Plug 'tpope/vim-commentary'               " Comments stuff
+""Plug 'tpope/vim-repeat'
+""Plug 'dhruvasagar/vim-table-mode',        { 'on': 'TableModeEnable' }
+""Plug 'kana/vim-textobj-user'
+""Plug 'sgur/vim-textobj-parameter'
+""Plug 'jasonlong/vim-textobj-css'
+""Plug 'Konfekt/FastFold'
+""Plug 'editorconfig/editorconfig-vim'
 
 " Git
-"Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
-"Plug 'airblade/vim-gitgutter'
-"Plug 'junegunn/gv.vim',                   { 'on': 'GV' }
-"Plug 'jez/vim-github-hub'
+""Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
+""Plug 'airblade/vim-gitgutter'
+""Plug 'junegunn/gv.vim',                   { 'on': 'GV' }
+""Plug 'jez/vim-github-hub'
 
 " Task Running
-"Plug 'tpope/vim-dispatch'                 " Run tasks asychronously in Tmux
+""Plug 'tpope/vim-dispatch'                 " Run tasks asychronously in Tmux
 Plug 'w0rp/ale'                           " Linter
-"Plug 'wincent/terminus'
-"Plug 'christoomey/vim-tmux-navigator'
-"Plug 'Olical/vim-enmasse'                 " Edit all files in a Quickfix list
-"Plug 'janko-m/vim-test'
+""Plug 'wincent/terminus'
+""Plug 'christoomey/vim-tmux-navigator'
+""Plug 'Olical/vim-enmasse'                 " Edit all files in a Quickfix list
+""Plug 'janko-m/vim-test'
 
 " Autocomplete {{{3
 Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-jedi'
-"Plug 'carlitux/deoplete-ternjs'
-"Plug 'alexlafroscia/deoplete-flow',       { 'branch': 'pass-filename-to-autocomplete' }
+""Plug 'zchee/deoplete-jedi'
+""Plug 'carlitux/deoplete-ternjs'
+""Plug 'alexlafroscia/deoplete-flow',       { 'branch': 'pass-filename-to-autocomplete' }
 Plug 'wokalski/autocomplete-flow'
-
 " For func argument completion
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -470,7 +473,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript',       { 'do': ':UpdateRemotePlugins' }
 
 " Elm {{{4
-"Plug 'ElmCast/elm-vim'
+""Plug 'ElmCast/elm-vim'
 
 " HTML {{{4
 Plug 'othree/html5.vim',                  { 'for': 'html' }
@@ -484,25 +487,25 @@ Plug 'hail2u/vim-css3-syntax',            { 'for': 'css' }
 Plug 'cakebaker/scss-syntax.vim'
 
 " Ruby {{{4
-Plug 'vim-ruby/vim-ruby',                 { 'for': 'ruby' }
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
+"Plug 'vim-ruby/vim-ruby',                 { 'for': 'ruby' }
+"Plug 'tpope/vim-rails'
+"Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 
 " Python {{{4
-Plug 'klen/python-mode',                  { 'for': 'python' }
-Plug 'davidhalter/jedi-vim',              { 'for': 'python' }
-Plug 'alfredodeza/pytest.vim',            { 'for': 'python' }
+"Plug 'klen/python-mode',                  { 'for': 'python' }
+"Plug 'davidhalter/jedi-vim',              { 'for': 'python' }
+"Plug 'alfredodeza/pytest.vim',            { 'for': 'python' }
 
 " Rust {{{4
-Plug 'wellbredgrapefruit/tomdoc.vim',     { 'for': 'ruby' }
-Plug 'wting/rust.vim'
-Plug 'cespare/vim-toml'
+"Plug 'wellbredgrapefruit/tomdoc.vim',     { 'for': 'ruby' }
+"Plug 'wting/rust.vim'
+"Plug 'cespare/vim-toml'
 
 " Go {{{4
-Plug 'fatih/vim-go'
-Plug 'nsf/gocode',                        { 'rtp': 'nvim', 'do': './nvim/symlink.sh' }
-Plug 'zchee/deoplete-go'
+"Plug 'fatih/vim-go'
+"Plug 'nsf/gocode',                        { 'rtp': 'nvim', 'do': './nvim/symlink.sh' }
+"Plug 'zchee/deoplete-go'
 
 " Markdown {{{4
 Plug 'reedes/vim-pencil'                  " Markdown, Writing
@@ -510,8 +513,8 @@ Plug 'godlygeek/tabular',                 { 'for': 'markdown' } " Needed for vim
 Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
 
 " Elixir {{{4
-Plug 'elixir-editors/vim-elixir'
-Plug 'slashmili/alchemist.vim'
+"Plug 'elixir-editors/vim-elixir'
+"Plug 'slashmili/alchemist.vim'
 
 call plug#end()
 
