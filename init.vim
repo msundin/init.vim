@@ -415,7 +415,7 @@ call plug#begin()
 " File Navigation
 "Plug 'vim-scripts/matchit.zip'            " More powerful % matching
 "Plug 'Lokaltog/vim-easymotion'            " Move like the wind!
-"Plug 'jeffkreeftmeijer/vim-numbertoggle'  " Smarter line numbers
+Plug 'jeffkreeftmeijer/vim-numbertoggle'  " Smarter line numbers
 "Plug 'wellle/targets.vim'
 "Plug 'kshenoy/vim-signature'
 "Plug 'haya14busa/incsearch.vim'           " Better search highlighting
@@ -453,8 +453,8 @@ Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
 Plug 'wokalski/autocomplete-flow'
 
 " For func argument completion
-"Plug 'Shougo/neosnippet'
-"Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " Language Support {{{3
 " JavaScript {{{4
