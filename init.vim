@@ -449,7 +449,12 @@ Plug 'w0rp/ale'                           " Linter
 Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
 "Plug 'zchee/deoplete-jedi'
 "Plug 'carlitux/deoplete-ternjs'
-Plug 'alexlafroscia/deoplete-flow',       { 'branch': 'pass-filename-to-autocomplete' }
+"Plug 'alexlafroscia/deoplete-flow',       { 'branch': 'pass-filename-to-autocomplete' }
+Plug 'wokalski/autocomplete-flow'
+
+" For func argument completion
+"Plug 'Shougo/neosnippet'
+"Plug 'Shougo/neosnippet-snippets'
 
 " Language Support {{{3
 " JavaScript {{{4
@@ -512,4 +517,5 @@ call plug#end()
 
 " Load plugin configurations
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#flow#flow_bin = 'flow' 
+"let g:deoplete#sources#flow#flow_bin = 'flow' 
+"let g:neosnippet#enable_completed_snippet = 1
