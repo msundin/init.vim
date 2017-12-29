@@ -445,9 +445,13 @@ nnoremap <S-Enter> O<Esc>
 nnoremap <CR> o<Esc>
 " show row numbers
 set number
-" Make it obvious where 80 characters is
-set textwidth=95
-set colorcolumn=+1
+" Make it obvious where 95 characters is
+if exists('+colorcolumn')
+  set textwidth=95
+  set colorcolumn=+1
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
+endif
 " don't let comments in when pasting
 "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " display incomplete commands
@@ -487,6 +491,7 @@ Plug 'itchyny/lightline.vim'
 ""Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'scrooloose/nerdtree'
+Plug 'mileszs/ack.vim'
 ""Plug 'vim-scripts/ctags.vim'              " ctags related stuff
 ""Plug 'majutsushi/tagbar'
 
@@ -594,6 +599,91 @@ Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
 "Plug 'slashmili/alchemist.vim'
 
 call plug#end()
+
+" Load plugin configurations {{{2
+" For some reason, a few plugins seem to have config options that cannot be
+" placed in the `plugins` directory. Those settings can be found here instead.
+
+" Section: Remaps {{{1
+
+" Normal Mode Remaps {{{2
+
+" Quickly find file in NERDTree
+nnoremap <leader>f :NERDTreeFind<CR>
+
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Smarter pasting
+nnoremap <Leader>p :set invpaste paste?<CR>
+
+" -- Smart indent when entering insert mode with i on empty lines --------------
+function! IndentWithI()
+  if len(getline('.')) == 0
+    return "\"_ddO"
+  else
+    return "i"
+  endif
+endfunction
+nnoremap <expr> i IndentWithI()
+
+" Tab Shortcuts
+nnoremap tk :tabfirst<CR>
+nnoremap tl :tabnext<CR>
+nnoremap th :tabprev<CR>
+nnoremap tj :tablast<CR>
+nnoremap tn :tabnew<CR>
+nnoremap tc :CtrlSpaceTabLabel<CR>
+nnoremap td :tabclose<CR>
+
+" }}}2
+" Insert Mode Remaps {{{2
+
+set completeopt-=preview
+
+" }}}2
+" }}}1
+" Section: Theme {{{
+
+" Setup Terminal Colors For Neovim {{{
+if has('nvim')
+  " dark0 + gray
+  let g:terminal_color_0 = "#282828"
+  let g:terminal_color_8 = "#928374"
+
+  " neurtral_red + bright_red
+  let g:terminal_color_1 = "#cc241d"
+  let g:terminal_color_9 = "#fb4934"
+
+  " neutral_green + bright_green
+  let g:terminal_color_2 = "#98971a"
+  let g:terminal_color_10 = "#b8bb26"
+
+  " neutral_yellow + bright_yellow
+  let g:terminal_color_3 = "#d79921"
+  let g:terminal_color_11 = "#fabd2f"
+
+  " neutral_blue + bright_blue
+  let g:terminal_color_4 = "#458588"
+  let g:terminal_color_12 = "#83a598"
+
+  " neutral_purple + bright_purple
+  let g:terminal_color_5 = "#b16286"
+  let g:terminal_color_13 = "#d3869b"
+
+  " neutral_aqua + faded_aqua
+  let g:terminal_color_6 = "#689d6a"
+  let g:terminal_color_14 = "#8ec07c"
+
+  " light4 + light1
+  let g:terminal_color_7 = "#a89984"
+  let g:terminal_color_15 = "#ebdbb2"
+endif " }}}
+" }}}
+" Section: Local-Machine Config {{{
+
+if filereadable($DOTFILES . "/nvim/init.local.vim")
+  source $DOTFILES/nvim/init.local.vim
+endif
 
 set background=dark
 colorscheme solarized
