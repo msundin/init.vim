@@ -382,14 +382,10 @@ nnoremap <S-Enter> O<Esc>
 " new line above current in normal mode
 nnoremap <CR> o<Esc>
 " show row numbers
-:set number
+set number
 " Point to the Python executables in `asdf` {{{2
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3.5'
-" ESLint fixer
-let g:ale_fixers = {
-  \ 'javascript': ['eslint']
-  \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins (Vim-Plug)
@@ -402,6 +398,7 @@ call plug#begin()
 ""Plug 'retorillo/airline-tablemode.vim'
 ""Plug 'edkolev/tmuxline.vim'               " Make the Tmux bar match Vim
 ""Plug 'ryanoasis/vim-webdevicons'
+Plug 'altercation/vim-colors-solarized' 
 Plug 'junegunn/goyo.vim'
 Plug 'itchyny/lightline.vim'
 
@@ -517,3 +514,6 @@ Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
 "Plug 'slashmili/alchemist.vim'
 
 call plug#end()
+
+set background=dark
+colorscheme solarized
