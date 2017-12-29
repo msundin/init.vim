@@ -438,7 +438,7 @@ endfunc
 " => Customizations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " map ESC to jj
-inoremap jj <esc>
+"inoremap jj <esc>
 " new line below current in normal mode
 nnoremap <S-Enter> O<Esc>
 " new line above current in normal mode
