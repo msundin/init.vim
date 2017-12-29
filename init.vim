@@ -517,8 +517,3 @@ Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
 "Plug 'slashmili/alchemist.vim'
 
 call plug#end()
-
-" Load plugin configurations
-let g:deoplete#enable_at_startup = 1
-"let g:deoplete#sources#flow#flow_bin = 'flow' 
-"let g:neosnippet#enable_completed_snippet = 1
