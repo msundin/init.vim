@@ -466,7 +466,7 @@ Plug 'mxw/vim-jsx'
 "Plug 'rhysd/npm-debug-log.vim'
 "Plug '~/projects/vim-plugins/vim-ember-cli'
 "Plug 'AndrewRadev/ember_tools.vim'
-"Plug 'neovim/node-host',                  { 'do': 'npm install' }
+"Plug 'neovim/node-host',                  { 'do': 'yarn install' }
 
 " TypeScript {{{4
 Plug 'HerringtonDarkholme/yats.vim'
