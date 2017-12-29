@@ -22,6 +22,42 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Command mode related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Smart mappings on the command line
+cno $h e ~/
+cno $d e ~/Desktop/
+cno $j e ./
+cno $c e <C-\>eCurrentFileDir("e")<cr>
+
+" it deletes everything until the last slash 
+cno $q <C-\>eDeleteTillSlash()<cr>
+
+" Bash like keys for the command line
+cnoremap <C-A>		<Home>
+cnoremap <C-E>		<End>
+cnoremap <C-K>		<C-U>
+
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
+" Map ½ to something useful
+map ½ $
+cmap ½ $
+imap ½ $
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Turn persistent undo on 
+"    means that you can undo even when you close a buffer/VIM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+try
+    set undodir=~/.config/nvim/tempdirs/undodir
+    set undofile
+catch
+endtry
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -75,10 +111,11 @@ set ruler
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
+
 set whichwrap+=<,>,h,l
 
 " Ignore case when searching
@@ -172,8 +209,9 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
+set shiftround
 
 " Linebreak on 500 characters
 set lbr
@@ -372,6 +410,30 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+func! DeleteTillSlash()
+    let g:cmd = getcmdline()
+
+    if has("win16") || has("win32")
+        let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", "")
+    else
+        let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
+    endif
+
+    if g:cmd == g:cmd_edited
+        if has("win16") || has("win32")
+            let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", "")
+        else
+            let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
+        endif
+    endif   
+
+    return g:cmd_edited
+endfunc
+
+func! CurrentFileDir(cmd)
+    return a:cmd . " " . expand("%:p:h") . "/"
+endfunc
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Customizations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -383,10 +445,27 @@ nnoremap <S-Enter> O<Esc>
 nnoremap <CR> o<Esc>
 " show row numbers
 set number
-" Point to the Python executables in `asdf` {{{2
+" Make it obvious where 80 characters is
+set textwidth=95
+set colorcolumn=+1
+" don't let comments in when pasting
+"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" display incomplete commands
+set showcmd
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+" Switch between the last two files
+nnoremap <Leader><Leader> <c-^>
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+" when pasting
+set pastetoggle=<F10>
+" live substitute
+set inccommand=nosplit
+" Point to the Python executables
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3.5'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins (Vim-Plug)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -398,6 +477,7 @@ call plug#begin()
 ""Plug 'retorillo/airline-tablemode.vim'
 ""Plug 'edkolev/tmuxline.vim'               " Make the Tmux bar match Vim
 ""Plug 'ryanoasis/vim-webdevicons'
+Plug 'machakann/vim-highlightedyank'
 Plug 'altercation/vim-colors-solarized' 
 Plug 'junegunn/goyo.vim'
 Plug 'itchyny/lightline.vim'
